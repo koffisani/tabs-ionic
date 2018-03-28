@@ -5,16 +5,11 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  <h2>Les derniers produits de ma boutique</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+    N'hésitez pas à commander vos produits. Nous vous les livrons à domicile.
   </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-  <ion-card *ngFor="let produit of products">
+  <ion-card *ngFor="let produit of products"  (click)="gotToPoductDetailPage(produit)">
     <ion-card-header>
       {{ produit.name }}
     </ion-card-header>

@@ -5,6 +5,7 @@ import { NavController } from 'ionic-angular';
 
 import 'rxjs/add/operator/map';
 import { ProductProvider } from '../../providers/product/product';
+import { ProductDetailPage } from '../product-detail/product-detail';
 
 @Component({
   selector: 'page-home',
@@ -25,6 +26,12 @@ export class HomePage {
     .subscribe((response: any) => {
       console.log(response)
       this.products = response;
+    })
+  }
+
+  gotToPoductDetailPage(produit) {
+    this.navCtrl.push(ProductDetailPage, {
+      productDetails: produit
     })
   }
 
