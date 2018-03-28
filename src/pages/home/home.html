@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Tous les produits</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,4 +14,10 @@
     Take a look at the <code>src/pages/</code> directory to add or change tabs,
     update any existing page or create new pages.
   </p>
+  <ion-card *ngFor="let produit of products">
+    <ion-card-header>
+      {{ produit.name }}
+    </ion-card-header>
+    <img [src]="produit.image" />
+  </ion-card>
 </ion-content>

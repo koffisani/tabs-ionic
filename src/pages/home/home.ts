@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+import { Http } from '@angular/http';
+
 import { NavController } from 'ionic-angular';
+
+import 'rxjs/add/operator/map';
+import { ProductProvider } from '../../providers/product/product';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +12,20 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  public products = [];
 
+  constructor(private product: ProductProvider, 
+    private http: Http,
+    public navCtrl: NavController) {
+
+  }
+
+  ionViewDidLoad () {
+    this.product.getProducts()
+    .subscribe((response: any) => {
+      console.log(response)
+      this.products = response;
+    })
   }
 
 }
