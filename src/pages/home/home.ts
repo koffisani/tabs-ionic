@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { NavController } from 'ionic-angular';
 
@@ -16,7 +15,6 @@ export class HomePage {
   public products = [];
 
   constructor(private product: ProductProvider, 
-    private http: Http,
     public navCtrl: NavController) {
 
   }
