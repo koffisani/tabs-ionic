@@ -19,5 +19,14 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Female</ion-label>
+      <ion-toggle [(ngModel)]="femaleSelected"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>Male</ion-label>
+        <ion-toggle [(ngModel)]="maleSelected"></ion-toggle>
+    </ion-item>
+  </ion-list>
 </ion-content>
