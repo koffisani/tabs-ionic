@@ -20,6 +20,8 @@ export class FilterModalPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private viewController: ViewController) {
+      this.femaleSelected = this.navParams.get('femaleSelected');
+      this.maleSelected = this.navParams.get('maleSelected');
   }
 
   ionViewDidLoad() {

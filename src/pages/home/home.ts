@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { NavController, ModalController } from 'ionic-angular';
 
@@ -15,10 +14,11 @@ import { FilterModalPage } from '../filter-modal/filter-modal';
 export class HomePage {
 
   public products = [];
+  public femaleSelected = true;
+  public maleSelected = true;
 
   constructor(private product: ProductProvider,
     private modalController: ModalController, 
-    private http: Http,
     public navCtrl: NavController) {
 
   }
@@ -38,8 +38,15 @@ export class HomePage {
   }
 
   openFilterModal () {
-    let openFilterModal = this.modalController.create(FilterModalPage);
+    let filterStateFromMainPage = {
+      femaleSelected: this.femaleSelected,
+      maleSelected: this.maleSelected
+    };
+    let openFilterModal = this.modalController.create(FilterModalPage, filterStateFromMainPage);
     openFilterModal.onDidDismiss((filterState) => {
+      this.femaleSelected = filterState.femaleSelected;
+      this.maleSelected = filterState.maleSelected;
+      
       this.product.getProducts()
       .subscribe((allProducts: any) => {
         let products = allProducts;
