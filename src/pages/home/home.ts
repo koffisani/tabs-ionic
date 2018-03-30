@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, ToastController } from 'ionic-angular';
 
 import 'rxjs/add/operator/map';
 import { ProductProvider } from '../../providers/product/product';
@@ -18,6 +18,7 @@ export class HomePage {
   public maleSelected = true;
 
   constructor(private product: ProductProvider,
+    public toastController: ToastController,
     private modalController: ModalController, 
     public navCtrl: NavController) {
 
@@ -65,7 +66,12 @@ export class HomePage {
             return product.gender !== "female";
           });
         }
-      })
+      });
+      let addFilterToast = this.toastController.create({
+        message: "Filtre appliqué !",
+        duration: 2000,
+      });
+      addFilterToast.present();
     });
     openFilterModal.present();
   }
